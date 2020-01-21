@@ -1,4 +1,5 @@
 const MSG = require('./constant');
+const logger = require('./logger');
 // 지정된 범위의 정수 1개를 랜덤하게 반환하는 함수
 // n1 은 "하한값", n2 는 "상한값"
 function randomRange(n1, n2) {
@@ -26,12 +27,12 @@ exports.call = (req, res) => {
   const params = req.body.text.split(MSG.regexp);
   let winner = [];
   if (params.length < MSG.MINIMUM_PARAMS_LENGTH || params[1] === 'help') {
-    //logger.access({ type: logger.ACCESS_TYPE.HELP, body: req.body });
+    logger.access({ type: logger.ACCESS_TYPE.HELP, body: req.body });
     return res.status(200).send({
         text: exports.getText(MSG.MSG_TYPE.HELP)
     });
   }
-  
+  logger.access({ type: logger.ACCESS_TYPE.CALL, body: req.body });
   //아닌 경우 wheel
   let winnerNum = params.length - 1;
   winner = WinnerList(Number(params[0]), winnerNum);
