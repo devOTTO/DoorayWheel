@@ -18,5 +18,5 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //         return res.status(200).send('OK');
 //     }
 // });
-require('daemon')();
+
 const router = require('./routes/main')(app);
