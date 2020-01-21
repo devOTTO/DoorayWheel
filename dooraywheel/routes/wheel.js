@@ -6,6 +6,9 @@ function randomRange(n1, n2) {
   return Math.floor( (Math.random() * (n2 - n1 + 1)) + n1 );
 }
 
+function getText (type, param) {
+  return MSG.MSG_TEXT[type].replace('${param}', param);
+};
 function WinnerList (num, range) {
   let winners = [];
   for(var i=0; i<num; i++) {
@@ -29,7 +32,7 @@ exports.call = (req, res) => {
   if (params.length < MSG.MINIMUM_PARAMS_LENGTH || params[1] === 'help') {
     logger.access({ type: logger.ACCESS_TYPE.HELP, body: req.body });
     return res.status(200).send({
-        text: exports.getText(MSG.MSG_TYPE.HELP)
+        text: getText(MSG.MSG_TYPE.HELP)
     });
   }
   logger.access({ type: logger.ACCESS_TYPE.CALL, body: req.body });
