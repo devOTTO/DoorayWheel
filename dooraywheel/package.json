@@ -11,6 +11,7 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.18.0",
+    "daemon": "^1.1.0",
     "dateformat": "^3.0.3",
     "dotenv": "^5.0.1",
     "express": "^4.16.2",
