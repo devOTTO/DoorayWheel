@@ -54,7 +54,7 @@ exports.call = (req, res) => {
   text += "입니다!";
   let title = "오늘의 당첨자 수 : "+ params[0];
   let value = "참여자 : ";
-  for(let i = 1; i<winnerNum; ++i)
+  for(let i = 1; i<params.length; ++i)
   {
     value += params[i] + ' ';
   }
@@ -62,12 +62,16 @@ exports.call = (req, res) => {
   return res.status(200).send({
     responseType: 'inChannel',
     text,
-    attachments : {
-      fields : {
+    attachments : [
+      {
+      fields : [
+        {
         title,
         value,
-      },
+        }
+      ]
     }
+    ]
 });
 };
 
