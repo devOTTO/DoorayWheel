@@ -1,4 +1,4 @@
-exports.MINIMUM_PARAMS_LENGTH = 10;   //  ('', Group 1, Group 2) * 3
+exports.MINIMUM_PARAMS_LENGTH = 3;   //  ('', Group 1, Group 2) 
 
 exports.MSG_TYPE = {
     HELP: 'HELP',
