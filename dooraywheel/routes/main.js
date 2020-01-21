@@ -4,7 +4,7 @@ dotenv.config();
 
 module.exports = (app) => {
     app.post('/', (req, res) => {     
-        console.log(req.body);   
+        
         if (!isValidToken(req.body)) {
             return res.status(403).send();
         }

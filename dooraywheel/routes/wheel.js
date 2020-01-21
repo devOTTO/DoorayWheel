@@ -29,8 +29,15 @@ function WinnerList (num, range) {
 exports.call = (req, res) => {
   const params = req.body.text.split(' ');
   let winner = [];
-  if (params.length < MSG.MINIMUM_PARAMS_LENGTH || params[1] === 'help') {
+
+  if (params.length < MSG.MINIMUM_PARAMS_LENGTH || params[0] === 'help') {
     logger.access({ type: logger.ACCESS_TYPE.HELP, body: req.body });
+    return res.status(200).send({
+        text: getText(MSG.MSG_TYPE.HELP)
+    });
+  }
+  if(params.length - 1 < params[0]){
+    logger.access({ type: logger.error, body: req.body });
     return res.status(200).send({
         text: getText(MSG.MSG_TYPE.HELP)
     });
@@ -42,12 +49,25 @@ exports.call = (req, res) => {
 
   let text = "돌려 돌려 돌림판~ 행운의 당첨자는! ";
   winner.forEach(cur => {
-    text += params[cur] + " "
+    text += "🌸" + params[cur] + "🌸 ";
   });
   text += "입니다!";
+  let title = "오늘의 당첨자 수 : "+= params[0];
+  let value = "참여자 : ";
+  for(let i = 1; i<winnerNum; ++i)
+  {
+    value += params[i] + ' ';
+  }
+
   return res.status(200).send({
     responseType: 'inChannel',
     text,
+    attachments : {
+      fields : {
+        title,
+        value,
+      },
+    }
 });
 };
 
