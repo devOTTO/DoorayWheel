@@ -1,4 +1,3 @@
-exports.regexp = /([^\s\"]+)|\"([^"]*)\"/g;   // (GroupWithoutSpace) "(Group with space)"
 exports.MINIMUM_PARAMS_LENGTH = 10;   //  ('', Group 1, Group 2) * 3
 
 exports.MSG_TYPE = {
