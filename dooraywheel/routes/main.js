@@ -6,7 +6,7 @@ module.exports = (app) => {
             return res.status(403).send();
         }
         
-        return Wheel.req(req.body, res);
+        return Wheel.call(req, res);
     });
 };
 

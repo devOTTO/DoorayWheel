@@ -22,7 +22,7 @@ function WinnerList (num, range) {
   }
 
 // Request URL
-exports.req = (req, res) => {
+exports.call = (req, res) => {
   const params = req.body.text.split(MSG.regexp);
   let winner = [];
   if (params.length < MSG.MINIMUM_PARAMS_LENGTH || params[1] === 'help') {
