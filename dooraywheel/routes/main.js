@@ -1,4 +1,6 @@
 const Wheel = require('./wheel');
+const dotenv = require('dotenv');
+dotenv.config();
 
 module.exports = (app) => {
     app.post('/', (req, res) => {     
