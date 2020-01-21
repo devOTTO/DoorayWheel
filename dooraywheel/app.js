@@ -19,4 +19,4 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //     }
 // });
 
-const router = require('./router/main')(app);
+const router = require('./routes/main')(app);
