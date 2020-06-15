@@ -79,9 +79,9 @@ exports.call = (req, res) => {
 
 // Request URL
 exports.callNumber = (req, res) => {
-  const params = req.body.text
+  const params = req.body.text.split(' ')
 
-  if (params.length < 1 || Number(params) <= 0 || params[0] === 'help') {
+  if (params.length < 1 || Number(params[0]) <= 0 || params[0] === 'help') {
     logger.access({ type: logger.ACCESS_TYPE.HELP, body: req.body })
     return res.status(200).send({
         text: getText(MSG.MSG_TYPE.HELP)
@@ -95,12 +95,12 @@ exports.callNumber = (req, res) => {
   }
   logger.access({ type: logger.ACCESS_TYPE.CALL, body: req.body })
   //아닌 경우 wheel
-  const winnerNum = randomRange(1, Number(params))
+  const winnerNum = randomRange(1, Number(params[0]))
 
   let text = "돌려 돌려 돌림판~ 행운의 숫자는!"
   text += "\n☾" + winnerNum + "ఌ "
   text += "입니다!"
-  let title = "숫자 범위 : 1 ~ "+ params
+  let title = "숫자 범위 : 1 ~ "+ params[0]
 
   return res.status(200).send({
     responseType: 'inChannel',
