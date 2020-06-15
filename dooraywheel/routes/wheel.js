@@ -11,6 +11,9 @@ const getText = (type, param) => {
 }
 const WinnerList = (num, range) => {
   let winners = []
+  const sameNum = (n) => {
+    return winners.find((e) => (e === n))
+    }
   for(var i=0; i<num; i++) {
     let n = randomRange(1, range)
     if (! sameNum(n)) {
@@ -19,9 +22,7 @@ const WinnerList = (num, range) => {
     i--
     }
   }
-    const sameNum = (n) => {
-    return winners.find((e) => (e === n))
-    }
+
   return winners
   }
 
