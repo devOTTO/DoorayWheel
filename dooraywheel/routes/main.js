@@ -10,6 +10,15 @@ module.exports = (app) => {
         }
         
         return Wheel.call(req, res);
+    })
+
+    app.post('/number', (req, res) => {     
+        
+        if (!isValidToken(req.body)) {
+            return res.status(403).send();
+        }
+        
+        return Wheel.callNumber(req, res);
     });
 };
 
