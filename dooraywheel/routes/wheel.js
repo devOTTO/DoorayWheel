@@ -40,7 +40,7 @@ exports.call = (req, res) => {
   if(params.length - 1 < params[0]){
     logger.access({ type: logger.error, body: req.body })
     return res.status(200).send({
-        text: getText(MSG.MSG_TYPE.MSG_TEXT)
+        text: getText(MSG.MSG_TYPE.HELP)
     });
   }
   logger.access({ type: logger.ACCESS_TYPE.CALL, body: req.body })
@@ -84,13 +84,13 @@ exports.callNumber = (req, res) => {
   if (params.length < 1 || Number(params[0]) <= 0 || params[0] === 'help') {
     logger.access({ type: logger.ACCESS_TYPE.HELP, body: req.body })
     return res.status(200).send({
-        text: getText(MSG.MSG_TYPE.HELP)
+        text: getText(MSG.MSG_TYPE.NHELP)
     });
   }
   if(params.length - 1 < params[0]){
     logger.access({ type: logger.error, body: req.body })
     return res.status(200).send({
-        text: getText(MSG.MSG_TYPE.MSG_NUMBER_TEXT)
+        text: getText(MSG.MSG_TYPE.NHELP)
     });
   }
   logger.access({ type: logger.ACCESS_TYPE.CALL, body: req.body })
