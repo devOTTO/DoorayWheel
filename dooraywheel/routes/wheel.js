@@ -87,12 +87,7 @@ exports.callNumber = (req, res) => {
         text: getText(MSG.MSG_TYPE.NHELP)
     });
   }
-  if(params.length - 1 < params){
-    logger.access({ type: logger.error, body: req.body })
-    return res.status(200).send({
-        text: getText(MSG.MSG_TYPE.NHELP)
-    });
-  }
+
   logger.access({ type: logger.ACCESS_TYPE.CALL, body: req.body })
   //아닌 경우 wheel
   const winnerNum = randomRange(1, Number(params))
