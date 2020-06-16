@@ -7,3 +7,8 @@ npm install
 npm start (need .env file & dooray token for dooary command app)
 ```
 
+## Daemon
+```
+npm install forever -g
+forever start app.js
+```
